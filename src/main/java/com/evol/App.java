@@ -3,6 +3,7 @@ package com.evol;
 import com.evol.dynamic.cg.Car;
 import com.evol.dynamic.cg.ProxyFactory;
 import com.evol.dynamic.jdk.DevelopWork;
+import com.evol.dynamic.jdk.PoxyInvocationFactory;
 import com.evol.dynamic.jdk.PoxyInvocationHandler;
 import com.evol.dynamic.jdk.Work;
 import com.evol.statics.Person;
@@ -23,6 +24,9 @@ public class App {
         DevelopWork developWork = new DevelopWork();
         Work work= (Work) new PoxyInvocationHandler().getProxyInstance(developWork);
         work.doThing("开发");
+        DevelopWork developWork1 = new DevelopWork();
+        Work work1= (Work) new PoxyInvocationFactory().getProxyInstance(developWork1);
+        work1.doThing("设计");
         //todo cglib 动态代理
         Car car = new Car();
         Car target = (Car) new ProxyFactory(car).getProxyInstance(car);
